@@ -1,0 +1,44 @@
+#!/bin/bash
+echo "creating September_dir:"
+mkdir September_dir
+
+echo "creating a file month_file in September_dir:"
+touch month_file
+mv month_file September_dir
+
+cd September_dir
+echo "*** line 1">>month_file
+echo "*** line 2">>month_file
+echo "*** line 3">>month_file
+
+echo "September_dir:"
+ls
+
+echo "September_dir/month_file:"
+cat month_file
+
+cd ..
+
+var=`ls -la | grep September\_dir`
+echo "the permissions of September_dir: ${var:0:10}"
+
+echo "change it to drwx------"
+chmod g-rx September_dir
+chmod o-rx September_dir
+var2=`ls -la | grep September\_dir`
+echo "permissions modified to ${var2:0:10}"
+
+echo "change it to drwxr-xr-x"
+chmod g+rx September_dir
+chmod o+rx September_dir
+var3=`ls -la | grep September\_dir`
+echo "permisions modified to ${var3:0:10}"
+
+echo "change it to d--x--x--x"
+chmod a-rw September_dir
+var4=`ls -la | grep September\_dir`
+echo "permissions modified to ${var4:0:10}"
+
+chmod u+rw September_dir
+echo "removing September_dir"
+rm -r September_dir

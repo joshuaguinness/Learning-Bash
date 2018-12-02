@@ -1,0 +1,72 @@
+#!/bin/bash
+
+echo "This is Text_1">Text_1
+echo "Text_2 is next">>Text_1
+
+echo "This is Text_2">Text_2
+echo "Text_3 is next">>Text_2
+
+echo "This is Text_3">Text_3
+echo "Text_4 is next">>Text_3
+
+echo "This is Text_4">Text_4
+echo "No next">>Text_4
+
+echo "file Text_1:"
+cat Text_1
+echo "---------------"
+
+echo "file Text_2:"
+cat Text_2
+echo "---------------"
+
+echo "file Text_3:"
+cat Text_3
+echo "---------------"
+
+echo "file Text_4:"
+cat Text_4
+echo "---------------"
+
+cat Text_4>All_files
+cat Text_3>>All_files
+cat Text_2>>All_files
+cat Text_1>>All_files
+
+echo "file All_files:"
+cat All_files
+echo "---------------"
+
+echo "directory:"
+ls -l
+
+echo "creating TEXT directory"
+mkdir TEXT
+
+echo "moving all odd Text files to TEXT"
+mv Text_1 TEXT
+mv Text_3 TEXT
+
+echo "showing current directory"
+ls
+
+echo "showing TEXT"
+cd TEXT
+ls
+
+cd ..
+
+rm Text_2
+rm Text_4
+rm All_files
+
+cd TEXT
+rm Text_1
+rm Text_3
+
+cd ..
+rmdir TEXT
+
+echo "after cleaneup:"
+ls -l
+
